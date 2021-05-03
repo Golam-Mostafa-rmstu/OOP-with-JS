@@ -1,9 +1,13 @@
-// Encapsulation
+// Factory function
 
-let circle = {
-    radius: 1,
-    draw: function(){
-        console.log('draw');
-    }
-}
-circle.draw()
+function createCircle(radius){
+    return{
+        radius,
+        draw: function(){
+            console.log('draw');
+        }
+    };
+};
+
+const cicle = createCircle(1);
+cicle.draw();
