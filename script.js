@@ -272,3 +272,27 @@ function processOrder(){
 console.log('take a order');
 processOrder();
 console.log('Another order completed');
+
+// execution control with asynchronous function
+function takeAOrder(customer, callback){
+    console.log(`${customer} order for food`);
+    callback(customer);
+}
+
+function processOrder(customer, callback){
+    console.log(`order is started for ${customer}`);
+    setTimeout(()=>{
+        console.log(`cooking is completed`);
+        console.log(`order is completed for ${customer}`);
+        callback(customer);
+    },3000)
+}
+
+function completOrder(customer){
+    console.log(`order is over for Mr ${customer} go for next`);
+}
+takeAOrder('Mushi', (customer)=>{
+    processOrder(customer, (customer)=>{
+        completOrder(customer);
+    })
+})
