@@ -261,3 +261,14 @@ person.apply(imran, [12, 13])
 
 let binding = person.bind(imran, 10);
 console.log(binding);
+
+function processOrder(){
+    console.log('Order started');
+    setTimeout(() =>{console.log('1st Order completed');}, 3000)
+
+    console.log('waiting for another order');
+}
+
+console.log('take a order');
+processOrder();
+console.log('Another order completed');
