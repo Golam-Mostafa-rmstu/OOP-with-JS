@@ -1,25 +1,22 @@
-// Inheritence with Class based
+
+
+
+//getter setter
 
 class Person{
     constructor(name, age){
+        this.name =name;
+        this.age =age;
+    }
+    get getName(){//getter
+        console.log(this.name);
+    }
+    set setName(name){//setter
         this.name = name;
-        this.age = age;
-    };
-    eat(){
-        console.log(`${this.name} is eating`);
-    };
+    }
 }
+const per1 = new Person('mostafa', 24);
+per1.getName;
+per1.setName = 'imran';//interesting
+console.log(per1.name);
 
-class Cricketer extends Person{
-    constructor(name, age, type, country){
-        super(name, age);
-        this.type = type;
-        this.country = country;
-    };
-    play(){
-        console.log(`${this.name} is playing`);
-    };
-}
-
-const taskin = new Cricketer('taskin', 33, 'bowler', 'bangladesh');
-taskin.eat();
