@@ -1,4 +1,4 @@
-Encapsulation
+// Encapsulation
 
 let circle = {
     radius: 1,
