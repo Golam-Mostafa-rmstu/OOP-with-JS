@@ -1,5 +1,5 @@
 
-// consturctor function
+// constructor construct
 
 function createCircle(radius){
     this.radius = radius;
@@ -8,6 +8,9 @@ function createCircle(radius){
     };
     //return this
 };
-const circle = new createCircle(1);// new keyword needed
-circle.draw();
-console.log(circle.radius);
+
+const circle = new createCircle(1);
+const keys = Object.keys(circle);
+console.log(keys);
+const values = Object.values(circle);
+console.log(values);
