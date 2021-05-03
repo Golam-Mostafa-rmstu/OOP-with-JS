@@ -1,6 +1,13 @@
-// accesses Object property/methods by another object
 
-let objectMethods = {
+// constructor function so much easier than above function
+function personDetails(name, age){
+    // let this = Object.create(objectMethods);
+    this.name = name;
+    this.age = age;
+    // return this;
+}
+
+personDetails.prototype = {
     eat(){
         console.log('eating');
     },
@@ -9,12 +16,5 @@ let objectMethods = {
     }
 }
 
-function personDetails(name, age){
-    let person = Object.create(objectMethods);
-    person.name = name;
-    person.age = age;
-    return person;
-}
-const me = personDetails('mostafa', 24);
-me.eat();
-me.play();// play() is not own method of 'me' obj
+const me = new personDetails('mostafa',23);
+me.play();
