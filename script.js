@@ -220,3 +220,27 @@ per1.getName;
 per1.setName = 'imran';//interesting
 console.log(per1.name);
 
+// polymorphism
+
+class Person {
+    constructor(name, age){
+        this.name = name;
+        this.age = age;
+    }
+    play(){
+        console.log(`${this.name} is playing with Person`);
+    }
+}
+class Cricketer extends Person{
+    constructor(name, age, type, country){
+        super(name,age);
+        this.type = type;
+        this.country = country;
+    }
+    play(){
+        super.play();
+        console.log(`${this.name} is playing with Cricketer`);
+    }
+}
+const per = new Cricketer('ab de', 34, 'bat', 'sa');
+per.play();
