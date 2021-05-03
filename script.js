@@ -1,4 +1,4 @@
-Encapsulation
+// Encapsulation
 
 let circle = {
     radius: 1,
@@ -296,3 +296,26 @@ takeAOrder('Mushi', (customer)=>{
         completOrder(customer);
     })
 })
+
+// // create a promise
+
+const hasMeeting = true;
+
+const meeting = new Promise((resolve, reject)=>{
+    if(!hasMeeting){
+        const meetingDetails = {
+            subjet : 'Tuition',
+            location : 'google meet',
+            time : '10:00 am'
+        };
+        resolve(meetingDetails);
+    }else reject(new Error('Meetig already scheduled'));
+})
+
+meeting
+    .then((res)=>{
+        console.log(JSON.stringify(res));
+    })
+    .catch(err => {
+        console.log(err.message);
+    })
