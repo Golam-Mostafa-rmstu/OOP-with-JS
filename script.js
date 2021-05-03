@@ -1,4 +1,4 @@
-// Encapsulation
+Encapsulation
 
 let circle = {
     radius: 1,
@@ -175,7 +175,7 @@ const mushi = new Cricketer('mushi', 35, 'wk-batsman', 'bangladesh');
 mushi.eat();
 console.log(mushi.name);
 
-// Inheritence with Class based
+Inheritence with Class based
 
 class Person{
     constructor(name, age){
@@ -244,3 +244,20 @@ class Cricketer extends Person{
 }
 const per = new Cricketer('ab de', 34, 'bat', 'sa');
 per.play();
+
+call aplly bind
+
+function person(...args){
+    let arr = args;
+    console.log(`${this.name} is good and ${arr[0]} and ${arr[1]}`);
+}
+const imran = {
+    name: 'imran',
+    age : 33
+}
+person.call(imran, 'well');
+
+person.apply(imran, [12, 13])
+
+let binding = person.bind(imran, 10);
+console.log(binding);
