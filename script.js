@@ -1,22 +1,25 @@
-// Inheritence with prototype based
-function Person(name, age){
-    this.name = name;
-    this.age = age;
-}
-Person.prototype.eat = function(){
-    console.log(`${this.name} is eating`);
-}
+// Inheritence with Class based
 
-function Cricketer(name, age, type, country){
-    Person.call(this, name, age);
-    // this.name = name;
-    this.type = type;
-    this.country = country;
+class Person{
+    constructor(name, age){
+        this.name = name;
+        this.age = age;
+    };
+    eat(){
+        console.log(`${this.name} is eating`);
+    };
 }
 
-Cricketer.prototype = Object.create(Person.prototype);
-Cricketer.prototype.constructor = Cricketer;
+class Cricketer extends Person{
+    constructor(name, age, type, country){
+        super(name, age);
+        this.type = type;
+        this.country = country;
+    };
+    play(){
+        console.log(`${this.name} is playing`);
+    };
+}
 
-const mushi = new Cricketer('mushi', 35, 'wk-batsman', 'bangladesh');
-mushi.eat();
-console.log(mushi.name);
+const taskin = new Cricketer('taskin', 33, 'bowler', 'bangladesh');
+taskin.eat();
