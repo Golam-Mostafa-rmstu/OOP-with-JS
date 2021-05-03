@@ -1,18 +1,20 @@
-// Abstraction
+// accesses Object property/methods by another object
 
-function createCircle(radius){
-    this.radius = radius;
-    let defaultLocation =  {x:1};
-    let computeOptimumLocation = function(factor){
-        console.log(factor);
+let objectMethods = {
+    eat(){
+        console.log('eating');
+    },
+    play(){
+        console.log('playing');
     }
-    this.draw = function(){
-        computeOptimumLocation(0.1);//only can handle by the draw function
-        console.log('draw');//closure concept is working there
-    };
-};
+}
 
-const circle = new createCircle(1);
-circle.draw();//can't computeOptimumLocation() without calling draw
-
-console.dir(circle.draw);
+function personDetails(name, age){
+    let person = Object.create(objectMethods);
+    person.name = name;
+    person.age = age;
+    return person;
+}
+const me = personDetails('mostafa', 24);
+me.eat();
+me.play();// play() is not own method of 'me' obj
