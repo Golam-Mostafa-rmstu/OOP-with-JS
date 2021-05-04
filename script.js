@@ -1,26 +1,30 @@
 // Encapsulation
 
-let circle = {
+let circle2 = {
     radius: 1,
     draw: function(){
         console.log('draw');
     }
 }
-circle.draw()
+circle2.draw()
 
 // Factory function
 
-function createCircle(radius){
-    return{
+function createCircle1(radius){
+    const obj = {
         radius,
-        draw: function(){
+        draw1: function(){
             console.log('draw');
         }
-    };
+    }
+    return obj;
 };
 
-const cicle = createCircle(1);
-cicle.draw();
+// console.dir(createCircle);
+
+const cicle = createCircle1(1);
+cicle.draw1();
+// console.dir(cicle)
 
 // consturctor function
 
@@ -31,9 +35,9 @@ function createCircle(radius){
     };
     //return this
 };
-const circle = new createCircle(1);// new keyword needed
-circle.draw();
-console.log(circle.radius);
+const circle1 = new createCircle(1);// new keyword needed
+circle1.draw();
+console.log(circle1.radius);
 
 // call method()
 
@@ -60,13 +64,13 @@ function createCircle(radius){
     //return this
 };
 
-const circle = new createCircle(1);
-const keys = Object.keys(circle);
+const circle3 = new createCircle(1);
+const keys = Object.keys(circle3);
 console.log(keys);
-const values = Object.values(circle);
+const values = Object.values(circle3);
 console.log(values);
 
-for(let key in circle){
+for(let key in circle3){
     // console.log(circle[key]);
     if(typeof circle[key] !== 'function')
         console.log(key);
@@ -88,10 +92,10 @@ function createCircle(radius){
     };
 };
 
-const circle = new createCircle(1);
-circle.draw();//can't computeOptimumLocation() without calling draw
+const circle4 = new createCircle(1);
+circle4.draw();//can't computeOptimumLocation() without calling draw
 
-console.dir(circle.draw);
+console.dir(circle4.draw);
 
 // accesses Object property/methods by another object
 
@@ -104,13 +108,13 @@ let objectMethods = {
     }
 }
 
-function personDetails(name, age){
+function personDetails1(name, age){
     let person = Object.create(objectMethods);
     person.name = name;
     person.age = age;
     return person;
 }
-const me = personDetails('mostafa', 24);
+const me = personDetails1('mostafa', 24);
 me.eat();
 me.play();// play() is not own method of 'me' obj
 
@@ -131,8 +135,8 @@ personDetails.prototype = {
     }
 }
 
-const me = new personDetails('mostafa',23);
-me.play();
+const me1 = new personDetails('mostafa',23);
+me1.play();
 
 // class is not understood by js it always works with above fashion but programmer want class
 
@@ -148,21 +152,21 @@ class Person {
         console.log('playing');
     }
 }
-const me = new Person('mostafa',23);
-me.play();
+const me2 = new Person('mostafa',23);
+me2.play();
 console.dir(Person)
 
 // Inheritence with prototype based
-function Person(name, age){
+function Person1(name, age){
     this.name = name;
     this.age = age;
 }
-Person.prototype.eat = function(){
+Person1.prototype.eat = function(){
     console.log(`${this.name} is eating`);
 }
 
 function Cricketer(name, age, type, country){
-    Person.call(this, name, age);
+    Person1.call(this, name, age);
     // this.name = name;
     this.type = type;
     this.country = country;
@@ -175,9 +179,9 @@ const mushi = new Cricketer('mushi', 35, 'wk-batsman', 'bangladesh');
 mushi.eat();
 console.log(mushi.name);
 
-Inheritence with Class based
+// Inheritence with Class based
 
-class Person{
+class Person2{
     constructor(name, age){
         this.name = name;
         this.age = age;
@@ -187,7 +191,7 @@ class Person{
     };
 }
 
-class Cricketer extends Person{
+class Cricketer1 extends Person2{
     constructor(name, age, type, country){
         super(name, age);
         this.type = type;
@@ -198,12 +202,12 @@ class Cricketer extends Person{
     };
 }
 
-const taskin = new Cricketer('taskin', 33, 'bowler', 'bangladesh');
+const taskin = new Cricketer1('taskin', 33, 'bowler', 'bangladesh');
 taskin.eat();
 
 // getter setter
 
-class Person{
+class Person3{
     constructor(name, age){
         this.name =name;
         this.age =age;
@@ -215,14 +219,14 @@ class Person{
         this.name = name;
     }
 }
-const per1 = new Person('mostafa', 24);
+const per1 = new Person3('mostafa', 24);
 per1.getName;
 per1.setName = 'imran';//interesting
 console.log(per1.name);
 
 // polymorphism
 
-class Person {
+class Person4 {
     constructor(name, age){
         this.name = name;
         this.age = age;
@@ -231,7 +235,7 @@ class Person {
         console.log(`${this.name} is playing with Person`);
     }
 }
-class Cricketer extends Person{
+class Cricketer2 extends Person4{
     constructor(name, age, type, country){
         super(name,age);
         this.type = type;
@@ -242,12 +246,12 @@ class Cricketer extends Person{
         console.log(`${this.name} is playing with Cricketer`);
     }
 }
-const per = new Cricketer('ab de', 34, 'bat', 'sa');
+const per = new Cricketer2('ab de', 34, 'bat', 'sa');
 per.play();
 
-call aplly bind
+// call aplly bind
 
-function person(...args){
+function person11(...args){
     let arr = args;
     console.log(`${this.name} is good and ${arr[0]} and ${arr[1]}`);
 }
@@ -255,14 +259,14 @@ const imran = {
     name: 'imran',
     age : 33
 }
-person.call(imran, 'well');
+person11.call(imran, 'well');
 
-person.apply(imran, [12, 13])
+person11.apply(imran, [12, 13])
 
-let binding = person.bind(imran, 10);
+let binding = person11.bind(imran, 10);
 console.log(binding);
 
-function processOrder(){
+function processOrder1(){
     console.log('Order started');
     setTimeout(() =>{console.log('1st Order completed');}, 3000)
 
@@ -270,7 +274,7 @@ function processOrder(){
 }
 
 console.log('take a order');
-processOrder();
+processOrder1();
 console.log('Another order completed');
 
 // execution control with asynchronous function
@@ -299,7 +303,29 @@ takeAOrder('Mushi', (customer)=>{
 
 // // create a promise
 
-const hasMeeting = true;
+// const hasMeeting = true;
+
+// const meeting = new Promise((resolve, reject)=>{
+//     if(!hasMeeting){
+//         const meetingDetails = {
+//             subjet : 'Tuition',
+//             location : 'google meet',
+//             time : '10:00 am'
+//         };
+//         resolve(meetingDetails);
+//     }else reject(new Error('Meetig already scheduled'));
+// })
+
+// meeting
+//     .then((res)=>{
+//         console.log(JSON.stringify(res));
+//     })
+//     .catch(err => {
+//         console.log(err.message);
+//     })
+
+// nested promise with then
+const hasMeeting = false;
 
 const meeting = new Promise((resolve, reject)=>{
     if(!hasMeeting){
@@ -312,7 +338,13 @@ const meeting = new Promise((resolve, reject)=>{
     }else reject(new Error('Meetig already scheduled'));
 })
 
+const addToCalendar = (meetingDetails) =>{
+    const calendar = `the ${meetingDetails.subjet} is scheduled at ${meetingDetails.location} at ${meetingDetails.time}`;
+    return Promise.resolve(calendar);
+}
+
 meeting
+    .then (addToCalendar)
     .then((res)=>{
         console.log(JSON.stringify(res));
     })
