@@ -469,14 +469,26 @@ function task1(){
     })
 }
 
-task1()
-    .then((res)=>console.log(res))
-    .then(task2)
-    .then(res => console.log(res))
-    .then(task4)
-    .then(res => console.log(res))
-    .then(task3)
-    .then(res => console.log(res))
-    .catch(err =>{
-        console.log(err.message);
-    });
+// task1()
+//     .then((res)=>console.log(res))
+//     .then(task2)
+//     .then(res => console.log(res))
+//     .then(task4)
+//     .then(res => console.log(res))
+//     .then(task3)
+//     .then(res => console.log(res))
+//     .catch(err =>{
+//         console.log(err.message);
+//     });
+// same job in sync form
+const allTasks = async() =>{
+    const t1 = await task1();
+    console.log(t1);
+    const t2 = await task2();
+    console.log(t2);
+    const t3 = await task3();// if want we can pass t2 to task3(t2)
+    console.log(t3);
+    const t4 = await task4();
+    console.log(t4);
+}
+allTasks();
