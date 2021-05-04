@@ -408,3 +408,44 @@ async function meetings(){
 
 meetings();
 console.log('hello');
+
+// make asynchronous function synchronous with callback function
+
+//asynchornous way
+// function task1(){
+//     console.log('task1');
+// }
+// function task2(){
+//     setTimeout(()=>{
+//         console.log('task2 data loading');
+//     }, 3000);
+// }
+// function task3(){
+//     console.log('task3');
+// }
+// task1();
+// task2();
+// task3();
+
+// synchronous way
+
+function task1(callback){
+    console.log('task1');
+    callback();
+}
+
+function task2(callback){
+    setTimeout(()=>{
+        console.log('task2 is data loading');
+        callback()
+    },3000);
+}
+
+function task3(){
+    console.log('task3');
+}
+task1(()=>{
+    task2(()=>{
+        task3();
+    })
+})
