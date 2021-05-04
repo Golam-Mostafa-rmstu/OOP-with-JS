@@ -351,3 +351,25 @@ meeting
     .catch(err => {
         console.log(err.message);
     })
+
+// promise all and race
+
+const promise1 = new Promise((resolve,reject)=>{
+    setTimeout(()=>{
+        resolve('Promise 1 resolved');
+    },4000)
+})
+const promise2 = new Promise((resolve,reject)=>{
+    setTimeout(()=>{
+        resolve('Promise 2 resolved');
+    },3000)
+})
+promise1.then(res => console.log(res));
+promise2.then(res => console.log(res));
+
+Promise.all([promise1, promise2])// at a time resolve no gap
+    .then(res => console.log(res));
+
+
+Promise.race([promise1, promise2])
+    .then(res => console.log(res));
