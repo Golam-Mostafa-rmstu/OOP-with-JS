@@ -449,3 +449,34 @@ task1(()=>{
         task3();
     })
 })
+
+// callback function ans async to sync with promises wow wow
+function task1(){
+    return new Promise((resolve, reject)=>{
+        resolve('task 1')
+    })
+}function task2(){
+    return new Promise((resolve, reject)=>{
+        resolve('task 2')
+    })
+}function task3(){
+    return new Promise((resolve, reject)=>{
+        resolve('task 3')
+    })
+}function task4(){
+    return new Promise((resolve, reject)=>{
+        resolve('task 4')
+    })
+}
+
+task1()
+    .then((res)=>console.log(res))
+    .then(task2)
+    .then(res => console.log(res))
+    .then(task4)
+    .then(res => console.log(res))
+    .then(task3)
+    .then(res => console.log(res))
+    .catch(err =>{
+        console.log(err.message);
+    });
