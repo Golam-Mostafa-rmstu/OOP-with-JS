@@ -373,3 +373,37 @@ Promise.all([promise1, promise2])// at a time resolve no gap
 
 Promise.race([promise1, promise2])
     .then(res => console.log(res));
+
+// asynchronous promise in synchronous way 
+// no need all the then 
+
+const hasMeeting1 = true;
+
+const meeting1 = new Promise((resolve, reject)=>{
+    if(!hasMeeting1){
+        const meetingDetails = {
+            subjet : 'Tuition',
+            location : 'google meet',
+            time : '10:00 am'
+        };
+        resolve(meetingDetails);
+    }else reject(new Error('Meetig already scheduled'));
+})
+
+const addToCalendar1 = (meetingDetails) =>{
+    const calendar = `the ${meetingDetails.subjet} is scheduled at ${meetingDetails.location} at ${meetingDetails.time}`;
+    return Promise.resolve(calendar);
+}
+
+async function meetings(){
+    try{
+        const meetingDetails = await meeting1;
+        const calendar = await addToCalendar1(meetingDetails);
+        console.log(calendar);
+    }
+    catch(err){
+        console.log(err.message);
+    }
+}
+
+meetings();
